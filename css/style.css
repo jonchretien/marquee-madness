@@ -1,0 +1,157 @@
+/*
+ * === VARIABLES ===
+*/
+
+:root {
+    /* Greyscale */
+
+    --black:                 #000;
+    --gray-darker:           #0a0a0a;
+    --gray-dark:             #3a3a3a;
+    --gray:                  #666;
+    --gray-light:            #999;
+    --gray-lighter:          #ccc;
+    --white:                 #fff;
+
+
+  /* Typography */
+
+  --font-family-san-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    /* Spacing */
+
+    --spacing-4:              4px;
+    --spacing-8:              8px;
+    --spacing-16:             16px;
+    --spacing-24:             24px;
+    --spacing-32:             32px;
+    --spacing-40:             40px;
+    --spacing-48:             48px;
+    --spacing-56:             56px;
+    --spacing-64:             64px;
+    --spacing-72:             72px;
+    --spacing-80:             80px;
+
+}
+
+/*
+ * === RESET ===
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+ * === APP ===
+*/
+
+/*
+ * — Scaffolding —
+*/
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--white);
+  border: var(--spacing-16) solid var(--gray);
+  box-shadow: inset 0 0 10px var(--gray-light);
+  color: var(--gray);
+  font-family: var(--font-family-san-serif);
+  font-size: 20px;
+  line-height: 1.5;
+  padding-top: var(--spacing-48);
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+/*
+ * — Marquee —
+*/
+.marquee {
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-text {
+  animation-iteration-count: infinite;
+  animation-name: marquee;
+  animation-timing-function: linear;
+  display: inline-block;
+  font-weight: bold;
+  letter-spacing: -.035em;
+  padding-left: 100%;
+  will-change: transform;
+}
+
+.marquee-text:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}
+
+
+/* Respect user preferences about animations */
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    white-space: normal
+  }
+
+  .marquee-text {
+    animation-duration: 0.01;
+    animation-iteration-count: 1;
+    padding-left: 0;
+  }
+}
+
+/*
+ * — Buttons —
+*/
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.btn {
+  background: var(--black);
+  border: 0;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 var(--spacing-8);
+  min-width: 55px;
+  padding: var(--spacing-8) var(--spacing-16);
+  transition: background .2s ease;
+}
+
+.btn:hover {
+  background: var(--gray-dark);
+  color: var(--white);
+}
+
+.btn[disabled],
+.btn[disabled]:hover {
+  background: var(--gray-lighter);
+  color: var(--gray-dark);
+}
