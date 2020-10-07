@@ -1,5 +1,7 @@
 # Marquee Madness
 
+https://jonchretien.github.io/marquee-madness/
+
 <div align="center">
     <img src="https://raw.githubusercontent.com/jonchretien/marquee-madness/main/screenshot.png">
 </div>
