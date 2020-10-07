@@ -9,13 +9,24 @@
   const container = document.getElementById('container');
   const type = {
     duration: [11, 12, 13, 14, 15, 16, 17, 18],
-    palette: ['264653', '2a9d8f', 'e9c46a', 'f4a261', 'e76f51'],
+    palette: [
+      'f94144',
+      'f3722c',
+      'f8961e',
+      'f9844a',
+      'f9c74f',
+      '90be6d',
+      '43aa8b',
+      '4d908e',
+      '577590',
+      '277da1',
+    ],
     size: [16, 24, 32, 48, 56, 64],
   };
   const numColors = type.palette.length;
   const numFonts = type.size.length;
   const numDurations = type.duration.length;
-  const randomnumber = (items) => Math.floor(Math.random() * items);
+  const getRandomNumber = (items) => Math.floor(Math.random() * items);
   const lyrics = [
     `Back in the days when I was a teenager`,
     `Before I had status and before I had a pager`,
@@ -35,7 +46,7 @@
     `Bona fide strong, you need leverage to sever`,
     `🎤🎤🎤🎤🎤`,
   ].map((lyric) => ({
-    duration: type.duration[randomnumber(numDurations)],
+    duration: type.duration[getRandomNumber(numDurations)],
     lyric,
   }));
 
@@ -47,8 +58,8 @@
     span.setAttribute(
       'style',
       `animation-duration: ${lyrics[counter].duration}s; font-size: ${
-        type.size[randomnumber(numFonts)]
-      }px; color: #${type.palette[randomnumber(numColors)]}`
+        type.size[getRandomNumber(numFonts)]
+      }px; color: #${type.palette[getRandomNumber(numColors)]}`
     );
     span.setAttribute('class', 'marquee-text');
     span.textContent = lyrics[counter].lyric;
