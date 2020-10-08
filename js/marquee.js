@@ -26,7 +26,6 @@
   const numColors = type.palette.length;
   const numFonts = type.size.length;
   const numDurations = type.duration.length;
-  const getRandomNumber = (items) => Math.floor(Math.random() * items);
   const lyrics = [
     `Back in the days when I was a teenager`,
     `Before I had status and before I had a pager`,
@@ -50,7 +49,11 @@
     lyric,
   }));
 
-  const createMarquee = () => {
+  function getRandomNumber(items) {
+    return Math.floor(Math.random() * items);
+  }
+
+  function createMarquee() {
     let div = document.createElement('div');
     let span = document.createElement('span');
     div.setAttribute('class', 'marquee');
@@ -66,23 +69,27 @@
     div.appendChild(span);
     container.appendChild(div);
     counter++;
-  };
+  }
 
-  const removeMarquee = () => {
+  function removeMarquee() {
     counter--;
     const el = document.querySelector(`[data-number="${counter}"]`);
     el.parentNode.removeChild(el);
-  };
+  }
 
-  const disableButton = (el) =>
-    !el.hasAttribute(DISABLED_STATE)
+  function disableButton(el) {
+    return !el.hasAttribute(DISABLED_STATE)
       ? el.setAttribute(DISABLED_STATE, true)
       : null;
+  }
 
-  const enableButton = (el) =>
-    el.hasAttribute(DISABLED_STATE) ? el.removeAttribute(DISABLED_STATE) : null;
+  function enableButton(el) {
+    return el.hasAttribute(DISABLED_STATE)
+      ? el.removeAttribute(DISABLED_STATE)
+      : null;
+  }
 
-  const onDecrementClick = () => {
+  function onDecrementClick() {
     enableButton(elBtnIncrement);
     removeMarquee();
 
@@ -90,9 +97,9 @@
       disableButton(elBtnDecrement);
       return;
     }
-  };
+  }
 
-  const onIncrementClick = () => {
+  function onIncrementClick() {
     enableButton(elBtnDecrement);
 
     if (counter === lyrics.length) {
@@ -101,17 +108,17 @@
     }
 
     createMarquee();
-  };
+  }
 
-  const addEventListeners = () => {
+  function addEventListeners() {
     elBtnIncrement.addEventListener('click', onIncrementClick);
     elBtnDecrement.addEventListener('click', onDecrementClick);
-  };
+  }
 
-  const init = () => {
+  function init() {
     addEventListeners();
     createMarquee(counter);
-  };
+  }
 
   init();
 })();
