@@ -117,7 +117,7 @@
 
   function init() {
     addEventListeners();
-    createMarquee(counter);
+    createMarquee();
   }
 
   init();
